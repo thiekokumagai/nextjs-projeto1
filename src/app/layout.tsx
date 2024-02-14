@@ -1,18 +1,29 @@
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ToastContainer } from "./nexttoast";
+import "react-toastify/dist/ReactToastify.css";
+import Camera from "@/components/webCam/Camera";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Cabine",
+  description: "Cabine de Serviços Digitais",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="pt-br">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
+    <html lang="pt-BR">
+      <body className="bg-[url('/fundo.svg')]">
+        {/* {children}
+        <ToastContainer /> */}
+        <Camera />
+      </body>
     </html>
-  )
+  );
 }
